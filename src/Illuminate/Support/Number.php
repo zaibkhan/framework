@@ -452,6 +452,7 @@ class Number
     {
         if (!is_numeric($number)) {
             return false;
+            
         }
         
         $formatter = new NumberFormatter($locale ?? app()->getLocale(), NumberFormatter::PERCENT);
