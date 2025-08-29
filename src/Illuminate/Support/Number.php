@@ -439,4 +439,24 @@ class Number
             throw new RuntimeException('The "intl" PHP extension is required to use the ['.$method.'] method.');
         }
     }
+
+    /**
+     * Format a number as a percentage with custom precision.
+     *
+     * @param  float|int  $number
+     * @param  int  $precision
+     * @param  string|null  $locale
+     * @return string|false
+     */
+    public static function formatPercentage($number, $precision = 2, $locale = null)
+    {
+        if (!is_numeric($number)) {
+            return false;
+        }
+        
+        $formatter = new NumberFormatter($locale ?? app()->getLocale(), NumberFormatter::PERCENT);
+        $formatter->setAttribute(NumberFormatter::FRACTION_DIGITS, $precision);
+        
+        return $formatter->format($number / 100);
+    }
 }
