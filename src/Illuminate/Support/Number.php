@@ -451,8 +451,9 @@ class Number
     public static function formatPercentage($number, $precision = 2, $locale = null)
     {
         if (!is_numeric($number)) {
-            return false;
             
+            return false;
+
         }
         
         $formatter = new NumberFormatter($locale ?? app()->getLocale(), NumberFormatter::PERCENT);
